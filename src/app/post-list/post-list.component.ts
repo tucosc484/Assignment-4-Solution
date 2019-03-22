@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { PostService } from '../post.service';
+import { Post } from '../types/Post';
 
 @Component({
   selector: 'app-post-list',
@@ -8,7 +9,7 @@ import { PostService } from '../post.service';
 })
 export class PostListComponent implements OnInit {
 
-  posts;
+  posts: Post[];
 
   constructor(private postService: PostService) { }
 

@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';
+import { Post } from './types/Post';
 
 const POSTS_ROUTE = 'https://jsonplaceholder.typicode.com/posts';
 const COMMENTS_ROUTE = 'https://jsonplaceholder.typicode.com/comments';
@@ -11,8 +12,13 @@ export class PostService {
 
   constructor(private http: HttpClient) { }
 
-  getAllPosts() {
-    return this.http.get(POSTS_ROUTE).toPromise();
+  /**
+   * Fetches all posts from the API.
+   *
+   * @returns all posts.
+   */
+  getAllPosts(): Promise<Post[]> {
+    return this.http.get<Post[]>(POSTS_ROUTE).toPromise();
   }
 
   /**
@@ -31,7 +37,7 @@ export class PostService {
    *
    * @param postId the id of the post that we want to fetch.
    */
-  getPost(postId: string) {
+  getPost(postId: string): Promise<Post> {
     return this.http.get(POSTS_ROUTE + `?id=${postId}`)
       .pipe(
         map(postArray => postArray[0]),

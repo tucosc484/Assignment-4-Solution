@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { post } from 'selenium-webdriver/http';
+import { Post } from '../types/Post';
+
 
 @Component({
   selector: 'app-post-list-item',
@@ -7,11 +8,10 @@ import { post } from 'selenium-webdriver/http';
   styleUrls: ['./post-list-item.component.scss']
 })
 export class PostListItemComponent implements OnInit {
-  @Input() post;
+  @Input() post: Post;
   constructor() { }
 
   ngOnInit() {
-    console.log(this.post);
   }
 
 }
