@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { PostService } from '../post.service';
 import { Post } from '../types/Post';
+import { Comment } from '../types/Comment';
 
 @Component({
   selector: 'app-post-details',
@@ -11,7 +12,7 @@ import { Post } from '../types/Post';
 export class PostDetailsComponent implements OnInit {
   postId: string;
   post: Post;
-  comments;
+  comments: Comment[];
   constructor(private activeRoute: ActivatedRoute, private postService: PostService) { }
 
   ngOnInit() {

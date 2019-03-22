@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 import { Post } from './types/Post';
+import { Comment } from './types/Comment';
 
 const POSTS_ROUTE = 'https://jsonplaceholder.typicode.com/posts';
 const COMMENTS_ROUTE = 'https://jsonplaceholder.typicode.com/comments';
@@ -45,7 +46,14 @@ export class PostService {
       .toPromise();
   }
 
-  getComments(postId: string) {
-    return this.http.get(COMMENTS_ROUTE + `?postId=${postId}`).toPromise();
+  /**
+   * Fetches all comments for a given post.
+   *
+   * @param postId the id of the post that the comments were left on.
+   * @returns the set of comments for the post.
+   */
+  getComments(postId: string): Promise<Comment[]> {
+    return this.http.get<Comment[]>(COMMENTS_ROUTE + `?postId=${postId}`)
+      .toPromise();
   }
 }
