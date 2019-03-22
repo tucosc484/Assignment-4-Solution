@@ -20,3 +20,9 @@ a {
   text-transform: uppercase;
   letter-spacing: 1.25;
 }
+.card {
+  border: 1px solid rgba(174, 174, 174, 0);
+  border-radius: 4px;
+  box-shadow: 0 1px 1px 0 rgba(60,64,67,.08), 0 1px 3px 1px rgba(60,64,67,.16);
+  padding: 16px 20px 12px;
+}
