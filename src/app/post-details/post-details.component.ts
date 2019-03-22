@@ -9,6 +9,7 @@ import { PostService } from '../post.service';
 })
 export class PostDetailsComponent implements OnInit {
   postId: string;
+  post;
   comments;
   constructor(private activeRoute: ActivatedRoute, private postService: PostService) { }
 
@@ -16,6 +17,7 @@ export class PostDetailsComponent implements OnInit {
     this.activeRoute.params.subscribe(async (data) => {
       // The id property on data is set because of the route structure in app-routing.module.ts
       this.postId = data.id;
+      this.post = await this.postService.getPost(this.postId);
       this.comments = await this.postService.getComments(this.postId);
     });
   }
